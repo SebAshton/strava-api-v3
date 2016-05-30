@@ -19,7 +19,7 @@ module Strava
         def exchange
           response = post_request
 
-          access_token_from_response(response.body)
+          access_token_from_response(response)
         rescue Net::HTTPBadRequest
           ClientError.new(response.code, response.body)
         rescue Net::HTTPUnauthorized
@@ -29,7 +29,7 @@ module Strava
         private
 
         def access_token_from_response(response)
-          json_body = MultiJson.load(response)
+          json_body = MultiJson.load(response.body)
 
           if json_body.has_key?('access_token')
             json_body['access_token']
