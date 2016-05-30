@@ -7,7 +7,6 @@ module Strava
   module Api
     module V3
       extend Configuration
-      include Token
     end
   end
 end
