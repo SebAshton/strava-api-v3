@@ -11,9 +11,9 @@ module Strava
         OAUTH_TOKEN_URL = 'https://www.strava.com/oauth/token'
 
         def initialize(options = {})
-          @client_id = options['client_id']
-          @client_secret = options['client_secret']
-          @code = options['code']
+          @client_id = options[:client_id]
+          @client_secret = options[:client_secret]
+          @code = options[:code]
         end
 
         def exchange
