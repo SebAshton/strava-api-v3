@@ -34,7 +34,7 @@ module Strava
           if json_body.has_key?('access_token')
             json_body['access_token']
           else
-            KeyError.new
+            APIError.new(response.code, response.body)
           end
         end
 
