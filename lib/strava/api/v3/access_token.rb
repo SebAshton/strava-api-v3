@@ -17,7 +17,7 @@ module Strava
         end
 
         def exchange
-          response = post_request(client_id, client_secret, code)
+          response = post_request
 
           access_token_from_response(response.body)
         rescue Net::HTTPBadRequest
@@ -38,11 +38,11 @@ module Strava
           end
         end
 
-        def post_request(client_id, client_secret, code)
+        def post_request
           Net::HTTP.post_form(oauth_token_uri, {
-            client_id: client_id,
-            client_secret: client_secret,
-            code: code })
+            client_id: @client_id,
+            client_secret: @client_secret,
+            code: @code })
         end
 
         def oauth_token_uri
